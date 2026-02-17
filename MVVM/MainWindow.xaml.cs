@@ -1,7 +1,9 @@
 ﻿// Required namespaces for WPF and MVVM functionality
 using System.ComponentModel;   // Provides INotifyPropertyChanged
+using System.IO;
 using System.Windows;          // Core WPF classes (Window, MessageBox, etc.)
 using System.Windows.Input;    // Provides ICommand interface
+using System.Xml.Serialization; // For XML serialization
 
 namespace MVVM
 {
@@ -35,6 +37,8 @@ namespace MVVM
         // Backing field for ProductName property
         private string _productName;
 
+        private readonly IXmlService _xmlService;
+
         // Property bound to the UI (e.g., TextBox)
         public string ProductName
         {
@@ -62,6 +66,9 @@ namespace MVVM
         private void Save()
         {
             // Example logic (normally you would save to DB or service)
+            var xmlService = new XmlService();
+            var product = new Product { Name = ProductName, Price = 9.99 };
+            xmlService.Save(product, "product.xml");
             MessageBox.Show($"Saved: {ProductName}");
         }
 
@@ -99,4 +106,46 @@ namespace MVVM
         public void Execute(object parameter) => _execute();
     }
 
+    public interface IXmlService
+    {
+        void Save<T>(T data, string filePath);
+        T Load<T>(string filePath);
+    }
+
+    public class XmlService : IXmlService
+    {
+        public void Save<T>(T data, string filePath)
+        {
+            try
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(T));
+                using (StreamWriter writer = new StreamWriter(filePath))
+                {
+                    serializer.Serialize(writer, data);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle or log error
+                throw new InvalidOperationException("Error saving XML file", ex);
+            }
+        }
+
+        public T Load<T>(string filePath)
+        {
+            try
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(T));
+                using (StreamReader reader = new StreamReader(filePath))
+                {
+                    return (T)serializer.Deserialize(reader);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle or log error
+                throw new InvalidOperationException("Error loading XML file", ex);
+            }
+        }
+    }
 }
