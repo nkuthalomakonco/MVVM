@@ -18,10 +18,10 @@ namespace MVVM_TodoList.ViewModels
         public string Title
         {
             get => _title;
-            set { _title = value; OnPropertyChanged(); }
+            set { _title = value; OnPropertyChanged(); (AddTaskCommand as RelayCommand)?.RaiseCanExecuteChanged(); }
         }
 
-//public ICommand AddTaskCommand { get; }
+        public ICommand AddTaskCommand { get; }
 
         public ToDoViewModel()
         {
@@ -30,7 +30,8 @@ namespace MVVM_TodoList.ViewModels
                 new TodoItem { Title = "Learn MVVM", IsCompleted = false },
                 new TodoItem { Title = "Build ToDo App", IsCompleted = false }
             };
-            //AddTaskCommand = new RelayCommand(AddTask, CanAddTask);
+
+            AddTaskCommand = new RelayCommand(AddTask, CanAddTask);
         }
 
         private void AddTask()

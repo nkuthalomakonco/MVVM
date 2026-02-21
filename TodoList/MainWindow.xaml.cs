@@ -14,10 +14,5 @@ namespace TodoList
             InitializeComponent();
             DataContext = new ToDoViewModel();
         }
-
-        private void AddTask_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

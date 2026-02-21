@@ -11,8 +11,8 @@
 
         <!-- Input row -->
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,10">
-            <TextBox x:Name="TaskInput" Width="200" Margin="0,0,5,0" />
-            <Button Content="Add" Width="60" Click="AddTask_Click"/>
+            <TextBox Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Width="200" Margin="0,0,5,0" />
+            <Button Content="Add" Width="60" Command="{Binding AddTaskCommand}" />
         </StackPanel>
 
         <!-- Tasks list -->
