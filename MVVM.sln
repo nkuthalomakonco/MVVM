@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM Product", "MVVM\MVVM P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM TodoList", "TodoList\MVVM TodoList.csproj", "{607ADF85-FCC5-46CC-ABD5-FF2168E0595F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM CommunityToolkit", "MVVM CommunityToolkit\MVVM CommunityToolkit.csproj", "{1FF42E6C-7AED-4657-AAB4-23F9770072D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{607ADF85-FCC5-46CC-ABD5-FF2168E0595F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{607ADF85-FCC5-46CC-ABD5-FF2168E0595F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{607ADF85-FCC5-46CC-ABD5-FF2168E0595F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FF42E6C-7AED-4657-AAB4-23F9770072D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FF42E6C-7AED-4657-AAB4-23F9770072D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FF42E6C-7AED-4657-AAB4-23F9770072D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FF42E6C-7AED-4657-AAB4-23F9770072D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
