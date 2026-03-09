@@ -1,0 +1,46 @@
+﻿<Window x:Class="MVVM_dotnet.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVM_dotnet" 
+        xmlns:core="clr-namespace:MVVMNetCore;assembly=MVVMNetCore"
+        mc:Ignorable="d"
+        Title="Counter" Height="200" Width="250" ThemeMode="System" >
+    
+    <!-- Resources section -->
+    <Window.Resources>
+        <!-- Instantiate the ViewModel as a static resource so it can be bound to the UI -->
+        <core:MainViewModel x:Key="ViewModel" />
+    </Window.Resources>
+
+    <!-- Main container StackPanel -->
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" 
+                DataContext="{StaticResource ViewModel}">
+        <!-- Bind the entire panel to the ViewModel -->
+
+        <!-- Counter Label -->
+        <TextBlock Text="Counter" />
+        <!-- Simple text label showing the word "Counter" -->
+
+        <!-- Current Value Display -->
+        <TextBlock Margin="0,8,0,8"
+                   Text="{Binding Counter}" />
+        <!-- Binds to the Counter property in ViewModel to show current value -->
+
+        <!-- Buttons container -->
+        <StackPanel Orientation="Horizontal">
+            <!-- Increment Button -->
+            <Button Margin="0,0,8,0"
+                    Content="Increment"
+                    Command="{Binding IncrementCounterCommand}" />
+            <!-- Binds to the command to increment counter -->
+
+            <!-- Decrement Button -->
+            <Button Content="Decrement"
+                    Command="{Binding DecrementCounterCommand}" />
+            <!-- Binds to the command to decrement counter -->
+        </StackPanel>
+    </StackPanel>
+
+</Window>
